@@ -16,12 +16,11 @@ function startTest() {
   <div class="mx-auto max-w-md px-6 py-12 md:max-w-4xl md:px-10 md:py-20">
     <div class="md:grid md:grid-cols-2 md:items-center md:gap-16">
       <div>
-        <p class="font-body text-sm font-medium text-teal-dark mb-3">A1 → C2, in one sitting</p>
         <h1 class="font-display text-[2.1rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl">
-          Find out your English level, no sign-up required
+          Find out your English level
         </h1>
         <p class="font-body text-base leading-relaxed text-ink/70 mb-8">
-          Take a quick, CEFR assessment covering grammar, vocabulary, reading, listening, and pronunciation to find out your level, then get a personalised plan for what to work on next.
+          Test your grammar, vocabulary, reading, listening, and pronunciation skills to find out your level.
         </p>
 
         <button
@@ -31,7 +30,7 @@ function startTest() {
         >
           Start test
         </button>
-        <p class="mt-3 font-body text-sm text-ink/50 md:mt-4">About 30 questions, roughly 5–8 minutes</p>
+        <p class="mt-3 font-body text-sm text-ink/50 md:mt-4">About 30 questions, roughly 6–8 minutes</p>
       </div>
 
       <div class="mt-12 md:mt-0">

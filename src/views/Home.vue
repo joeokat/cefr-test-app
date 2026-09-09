@@ -1,17 +1,21 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import reviewerMaria from '../assets/reviewer-maria.svg'
+import reviewerAhmed from '../assets/reviewer-ahmed.svg'
 
 const router = useRouter()
 
 const steps = [
-  { title: 'Take the test', body: 'About 30 questions covering grammar, vocabulary, reading, listening, and pronunciation, roughly 8–10 minutes.' },
-  { title: 'Get your level', body: "See your CEFR level (A1–C2) right away, plus which area to focus on first." },
-  { title: 'Get your next step', body: 'Download a detailed report, book a tutor, or join the free community. Whatever fits where you are.' },
+  { title: 'Take the assessment', body: 'Answer around 30 questions covering grammar, vocabulary, reading, listening, and pronunciation. It takes about 6–8 minutes.' },
+  { title: 'Discover your level', body: 'Get your CEFR English level, from A1 to C2, instantly. You’ll also see which areas you’re doing well in and where you can improve.' },
+  { title: 'Choose your next step', body: 'Get a detailed report and decide what works best for you. Find a tutor, join the free community, or simply use your results to guide your learning.' },
 ]
 
 const reviews = [
-  { avatar: 'https://i.pravatar.cc/96?img=47', quote: 'I finally have a clear idea of my level and what I should practise next.', author: 'Maria S., B1 learner' },
-  { avatar: 'https://i.pravatar.cc/96?img=12', quote: 'The test was quick, easy to follow, and more useful than I expected.', author: 'Ahmed K., B2 learner' },
+  { avatar: reviewerMaria, quote: 'I finally have a clear idea of my level and what I should practise next.', author: 'Maria S., B1 learner' },
+  { avatar: reviewerAhmed, quote: 'The test was quick, easy to follow, and more useful than I expected.', author: 'Ahmed K., B2 learner' },
+  { avatar: reviewerMaria, quote: 'It helped me focus on the exact areas I needed to improve instead of guessing.', author: 'Lena T., A2 learner' },
+  { avatar: reviewerAhmed, quote: 'I used the result to choose my next tutor and it saved me a lot of time.', author: 'Daniel R., C1 learner' },
 ]
 </script>
 
@@ -23,8 +27,11 @@ const reviews = [
       <h1 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight">
         Know exactly where your English stands
       </h1>
+      <p class="font-body text-base leading-relaxed text-ink/70 mb-4 md:mx-auto md:max-w-xl">
+        Take a free English test and discover your proficiency level in minutes. No login required.
+      </p>
       <p class="font-body text-base leading-relaxed text-ink/70 mb-8 md:mx-auto md:max-w-xl">
-        A free English Level assessment, and a directory of real tutors if you want to go further. No login required.
+        Want to improve? Find a tutor who can help you move to the next level.
       </p>
     </div>
 
@@ -48,7 +55,7 @@ const reviews = [
 
     <!-- How it works -->
     <div class="mt-14 pt-10 md:mt-16">
-      <h2 class="font-display text-base font-semibold text-ink mb-6 md:text-center">How it works</h2>
+      <h2 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight md:text-center">How it works</h2>
       <ol class="flex flex-col gap-6 md:grid md:grid-cols-3 md:gap-8">
         <li v-for="(step, i) in steps" :key="step.title" class="flex gap-4 md:flex-col md:items-center md:text-center md:gap-3">
           <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal/15 font-display text-sm font-semibold text-teal-dark">
@@ -75,7 +82,7 @@ const reviews = [
 
     <!-- Learner feedback -->
     <div class="mt-14 pt-10 md:mt-16 md:mx-auto md:max-w-2xl">
-      <h2 class="font-display text-base font-semibold text-ink mb-5">What learners say</h2>
+      <h2 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight md:text-center">What learners say</h2>
       <div class="flex flex-col gap-4">
         <blockquote
           v-for="review in reviews"
@@ -96,7 +103,7 @@ const reviews = [
     </div>
 
     <p class="mt-14 text-center font-body text-xs text-ink/40 md:mt-16">
-      No login. No data saved. Just your result.
+      No login required. Your results stay private.
     </p>
   </div>
 </template>
