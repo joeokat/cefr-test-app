@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* CEFR band colors — reused across the scale visual, progress indicator, and results reveal */
+  --band-a1: #4A7B6C;
+  --band-a2: #6B8E63;
+  --band-b1: #9C9A4F;
+  --band-b2: #C9973F;
+  --band-c1: #C9733F;
+  --band-c2: #B0472E;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+h1, h2, h3 {
+  font-family: '"Space Grotesk"', sans-serif;
+}
+
+::selection {
+  background: var(--band-b2);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.teal.DEFAULT');
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
