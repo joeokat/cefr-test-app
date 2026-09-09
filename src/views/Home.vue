@@ -17,6 +17,21 @@ const reviews = [
   { avatar: reviewerMaria, quote: 'It helped me focus on the exact areas I needed to improve instead of guessing.', author: 'Lena T., A2 learner' },
   { avatar: reviewerAhmed, quote: 'I used the result to choose my next tutor and it saved me a lot of time.', author: 'Daniel R., C1 learner' },
 ]
+
+const faqs = [
+  {
+    question: 'Who is this assessment for?',
+    answer: 'This assessment is for non-native English speakers who want to know where they stand and what to work on next.',
+  },
+  {
+    question: 'What kinds of goals does it help with?',
+    answer: 'Whether you’re preparing to study abroad, getting ready for IELTS or TOEFL, using English at work, or simply looking to improve, you’ll get a clear picture of your current level.',
+  },
+  {
+    question: 'How is the assessment designed?',
+    answer: 'The assessment follows the CEFR framework and is informed by real English-teaching practice. It is designed to measure the skills that matter across academic, professional, and everyday English.',
+  },
+]
 </script>
 
 <template>
@@ -30,9 +45,14 @@ const reviews = [
       <p class="font-body text-base leading-relaxed text-ink/70 mb-4 md:mx-auto md:max-w-xl">
         Take a free English test and discover your proficiency level in minutes. No login required.
       </p>
-      <p class="font-body text-base leading-relaxed text-ink/70 mb-8 md:mx-auto md:max-w-xl">
-        Want to improve? Find a tutor who can help you move to the next level.
-      </p>
+      <div class="mb-8 md:mx-auto md:max-w-xl">
+        <p class="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-3 py-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-dark">
+          Want to improve?
+        </p>
+        <p class="mt-3 font-body text-base leading-relaxed text-ink/70 md:whitespace-nowrap">
+          Find a tutor who can help you move to the next level.
+        </p>
+      </div>
     </div>
 
     <!-- Two equal paths -->
@@ -71,13 +91,17 @@ const reviews = [
 
     <!-- Who this is for -->
     <div class="mt-14 pt-10 md:mt-16 md:mx-auto md:max-w-2xl">
-      <h2 class="font-display text-base font-semibold text-ink mb-3">Who this is for</h2>
-      <p class="font-body text-[15px] leading-relaxed text-ink/70 mb-4">
-        Non-native English speakers who want to know exactly where they stand — whether you're preparing to study abroad, getting ready for IELTS or TOEFL, using English at work, or just want to improve.
-      </p>
-      <p class="font-body text-[15px] leading-relaxed text-ink/70">
-        This test comes out of an active English-teaching community — the same questions and standards used with real students, made free for anyone to try.
-      </p>
+      <h2 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight md:text-center">FAQs</h2>
+      <div class="space-y-3">
+        <div
+          v-for="faq in faqs"
+          :key="faq.question"
+          class="rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm"
+        >
+          <p class="font-display text-[15px] font-semibold text-ink">{{ faq.question }}</p>
+          <p class="mt-2 font-body text-[15px] leading-relaxed text-ink/70">{{ faq.answer }}</p>
+        </div>
+      </div>
     </div>
 
     <!-- Learner feedback -->
