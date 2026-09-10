@@ -1,4 +1,3 @@
-const USD_PRICE = 0.99
 // Fallback rate used only if the live rate can't be fetched (e.g. offline).
 // Update this occasionally so the fallback doesn't drift too far from reality.
 const FALLBACK_USD_TO_GHS = 15.5
@@ -27,18 +26,18 @@ async function fetchUsdToGhsRate() {
 }
 
 /**
- * Returns the amount to charge via Paystack for the $0.99 report,
+ * Returns the amount to charge via Paystack for a USD price,
  * converted to GHS (Paystack's only currency enabled on this account)
  * at the current live exchange rate. Amount is in whole pesewas
  * (GHS's smallest unit) as Paystack's API expects, plus the GHS amount
  * as a display string.
  */
-export async function getGhsChargeAmount() {
+export async function getGhsChargeAmount(usdPrice = 0.99) {
   const rate = await fetchUsdToGhsRate()
-  const ghsAmount = Math.round(USD_PRICE * rate * 100) / 100 // round to 2dp
+  const ghsAmount = Math.round(usdPrice * rate * 100) / 100 // round to 2dp
   return {
     ghsAmount,
     pesewas: Math.round(ghsAmount * 100),
-    displayUsd: `$${USD_PRICE.toFixed(2)}`,
+    displayUsd: `$${usdPrice.toFixed(2)}`,
   }
 }

@@ -1,3 +1,46 @@
+<script setup>
+import { computed, ref } from 'vue'
+import PaywallModal from '../components/PaywallModal.vue'
+import { downloadBook } from '../utils/downloadBook'
+
+const search = ref('')
+const selected = ref('All levels')
+const sort = ref('featured')
+const selectedBook = ref(null)
+const showPaywall = ref(false)
+const downloadError = ref('')
+const levels = ['All levels', 'A1–A2', 'B1–B2', 'C1–C2']
+const books = [
+    { title: 'The Little Lantern', author: 'JoeOkat', level: 'A1–A2', type: 'Short story', time: 12, price: 'Free', color: 'coral', description: 'A warm story about finding courage in small places.', downloadUrl: '/ebooks/the-little-lantern.pdf', downloadName: 'the-little-lantern.pdf' },
+    { title: 'A City of Small Things', author: 'Lena Park', level: 'B1–B2', type: 'Easy reader', time: 28, price: '$0.49', color: 'blue', description: 'Discover the extraordinary in an ordinary day.' },
+    { title: 'The Last Letter', author: 'Noah Williams', level: 'B1–B2', type: 'Short story', time: 18, price: 'Free', color: 'green', description: 'A thoughtful story about friendship, distance, and home.' },
+    { title: 'Beyond the Stars', author: 'Ari Cole', level: 'C1–C2', type: 'Novella', time: 42, price: '$0.99', color: 'purple', description: 'An inspiring journey for curious minds and brave dreamers.' }
+]
+
+const filteredBooks = computed(() => books.filter(book => (selected.value === 'All levels' || book.level === selected.value) && `${book.title} ${book.author} ${book.description}`.toLowerCase().includes(search.value.toLowerCase())).sort((a, b) => sort.value === 'free' ? (b.price === 'Free') - (a.price === 'Free') : 0))
+
+function startDownload(book) {
+    downloadError.value = ''
+    if (downloadBook(book)) return
+    downloadError.value = `The PDF for ${book.title} is not available yet.`
+}
+
+function selectBook(book) {
+    selectedBook.value = book
+    if (book.price === 'Free') {
+        startDownload(book)
+        return
+    }
+    downloadError.value = ''
+    showPaywall.value = true
+}
+
+function handlePaymentSuccess() {
+    showPaywall.value = false
+    if (selectedBook.value) startDownload(selectedBook.value)
+}
+</script>
+
 <template>
     <main class="library">
         <section class="hero">
@@ -34,12 +77,13 @@
                     <div class="details"><small>{{ book.type }} · {{ book.time }} min read</small>
                         <h3>{{ book.title }}</h3>
                         <p>{{ book.description }}</p>
-                        <footer><strong :class="{ free: book.price === 'Free' }">{{ book.price }}</strong><button> {{
+                        <footer><strong :class="{ free: book.price === 'Free' }">{{ book.price }}</strong><button type="button" @click="selectBook(book)"> {{
                             book.price === 'Free' ? 'Download' : 'Buy' }} →</button></footer>
                     </div>
                 </article>
             </div>
             <p v-if="!filteredBooks.length" class="empty">No stories found. Try another search or level.</p>
+            <p v-if="downloadError" class="empty">{{ downloadError }}</p>
         </section>
         <section class="callout"><span>✦</span>
             <div><span class="eyebrow">MADE FOR PROGRESS</span>
@@ -48,21 +92,12 @@
             </div><a class="light" href=https://whatsapp.com/channel/0029Vb5k0yeFi8xZMhyvel0g target="_blank">Start reading →</a>
         </section>
     </main>
+    <PaywallModal
+        :open="showPaywall"
+        :title="selectedBook?.title"
+        :price="selectedBook?.price"
+        @close="showPaywall = false"
+        @success="handlePaymentSuccess"
+    />
 </template>
-
-<script setup>
-import { computed, ref } from 'vue'
-
-const search = ref('')
-const selected = ref('All levels')
-const sort = ref('featured')
-const levels = ['All levels', 'A1–A2', 'B1–B2', 'C1–C2']
-const books = [
-    { title: 'The Little Lantern', author: 'JoeOkat', level: 'A1–A2', type: 'Short story', time: 12, price: 'Free', color: 'coral', description: 'A warm story about finding courage in small places.' },
-    { title: 'A City of Small Things', author: 'Lena Park', level: 'B1–B2', type: 'Easy reader', time: 28, price: '$0.49', color: 'blue', description: 'Discover the extraordinary in an ordinary day.' },
-    { title: 'The Last Letter', author: 'Noah Williams', level: 'B1–B2', type: 'Short story', time: 18, price: 'Free', color: 'green', description: 'A thoughtful story about friendship, distance, and home.' },
-    { title: 'Beyond the Stars', author: 'Ari Cole', level: 'C1–C2', type: 'Novella', time: 42, price: '$0.99', color: 'purple', description: 'An inspiring journey for curious minds and brave dreamers.' }
-]
-const filteredBooks = computed(() => books.filter(book => (selected.value === 'All levels' || book.level === selected.value) && `${book.title} ${book.author} ${book.description}`.toLowerCase().includes(search.value.toLowerCase())).sort((a, b) => sort.value === 'free' ? (b.price === 'Free') - (a.price === 'Free') : 0))
-</script>
 

@@ -8,6 +8,8 @@ const PAYSTACK_PUBLIC_KEY = 'pk_test_your_public_key_here'
 
 const props = defineProps({
   open: { type: Boolean, default: false },
+  title: { type: String, default: 'your purchase' },
+  price: { type: String, default: '$0.99' },
 })
 const emit = defineEmits(['close', 'success'])
 
@@ -22,7 +24,7 @@ const charge = ref(null) // { ghsAmount, pesewas, displayUsd }
 watch(() => props.open, async (isOpen) => {
   if (!isOpen || charge.value) return
   isLoadingRate.value = true
-  charge.value = await getGhsChargeAmount()
+  charge.value = await getGhsChargeAmount(Number.parseFloat(props.price.replace('$', '')))
   isLoadingRate.value = false
 })
 
@@ -79,9 +81,9 @@ function pay() {
           ✕
         </button>
 
-        <h2 class="font-display text-lg font-semibold text-ink mb-2">Unlock your detailed report</h2>
+        <h2 class="font-display text-lg font-semibold text-ink mb-2">Unlock {{ props.title }}</h2>
         <p class="font-body text-sm leading-relaxed text-ink/70 mb-5">
-          Get a downloadable PDF with your full band-by-band breakdown, a question-by-question review with explanations, skill-area scores, and a personalised study plan.
+          Complete your payment to download this ebook as a PDF.
         </p>
 
         <div class="mb-4 rounded-card border border-line bg-white/60 p-4 text-center">
