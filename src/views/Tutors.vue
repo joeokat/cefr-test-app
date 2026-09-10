@@ -13,8 +13,8 @@ function openProfile(id) {
 <template>
   <div class="mx-auto max-w-6xl px-6 py-10 md:px-10 md:py-14">
     <section class="mb-8 rounded-[28px] border border-line bg-white/70 p-6 shadow-sm md:p-8">
-      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div class="md:max-w-2xl">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div class="lg:max-w-2xl">
           <h1 class="font-display text-3xl font-semibold text-ink md:text-5xl">
             Online English instructors &amp; teachers for private classes
           </h1>
@@ -23,7 +23,7 @@ function openProfile(id) {
           </p>
         </div>
 
-        <div class="grid grid-cols-3 gap-3 text-left md:w-[320px]">
+        <div class="grid grid-cols-3 gap-3 text-left md:w-full lg:w-[320px] lg:shrink-0">
           <div class="rounded-card border border-line bg-paper p-3">
             <p class="text-[10px] uppercase tracking-[0.12em] text-ink/50">Teachers</p>
             <p class="mt-2 font-display text-xl font-semibold text-ink">100+</p>
