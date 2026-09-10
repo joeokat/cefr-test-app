@@ -26,15 +26,15 @@ function openProfile(id) {
         <div class="grid grid-cols-3 gap-3 text-left md:w-full lg:w-[320px] lg:shrink-0">
           <div class="rounded-card border border-line bg-paper p-3">
             <p class="text-[10px] uppercase tracking-[0.12em] text-ink/50">Teachers</p>
-            <p class="mt-2 font-display text-xl font-semibold text-ink">100+</p>
+            <p class="mt-2 font-display text-xl font-semibold text-ink">50+</p>
           </div>
           <div class="rounded-card border border-line bg-paper p-3">
-            <p class="text-[10px] uppercase tracking-[0.12em] text-ink/50">Avg rating</p>
+            <p class="text-[10px] uppercase tracking-[0.12em] text-ink/50">Rating</p>
             <p class="mt-2 font-display text-xl font-semibold text-ink">4.7</p>
           </div>
           <div class="rounded-card border border-line bg-paper p-3">
             <p class="text-[10px] uppercase tracking-[0.12em] text-ink/50">Students</p>
-            <p class="mt-2 font-display text-xl font-semibold text-ink">10k+</p>
+            <p class="mt-2 font-display text-xl font-semibold text-ink">1k+</p>
           </div>
         </div>
       </div>
@@ -42,11 +42,10 @@ function openProfile(id) {
 
     <div class="mb-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
       <div class="flex flex-wrap gap-2">
-        <span class="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70">English</span>
         <span class="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70">Speaking</span>
+        <span class="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70">Business English</span>
         <span class="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70">IELTS</span>
         <span class="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70">TOEFL</span>
-        <span class="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink/70">Business English</span>
       </div>
 
       <!-- <div class="rounded-full border border-teal/30 bg-teal/10 px-3 py-1.5 text-xs font-medium text-teal-dark">
