@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import BottomTabBar from './components/BottomTabBar.vue'
+import SupportFab from './components/SupportFab.vue'
 
 const route = useRoute()
 </script>
@@ -13,5 +14,6 @@ const route = useRoute()
       <router-view />
     </div>
     <BottomTabBar v-if="!route.meta.hideNav" />
+    <SupportFab />
   </div>
 </template>
