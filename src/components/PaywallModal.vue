@@ -4,7 +4,7 @@ import { getGhsChargeAmount } from '../utils/currency'
 
 // --- Configurable: your real Paystack public key. Test keys start with
 // pk_test_, live keys with pk_live_. Get this from your Paystack dashboard.
-const PAYSTACK_PUBLIC_KEY = 'pk_test_2716197ce41ad173e08f25e9f7afc1b7b3ace08c'
+const PAYSTACK_PUBLIC_KEY = 'pk_live_f218d9c58e0a074d6a4212a2aa7a5dcdef4e7024'
 
 const props = defineProps({
   open: { type: Boolean, default: false },
