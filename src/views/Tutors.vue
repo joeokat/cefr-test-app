@@ -16,7 +16,7 @@ function openProfile(id) {
       <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div class="lg:max-w-2xl">
           <h1 class="font-display text-3xl font-semibold text-ink md:text-5xl">
-            Online English instructors &amp; teachers for private classes
+            Online English Teachers for Private Classes
           </h1>
           <p class="mt-4 max-w-xl text-sm leading-relaxed text-ink/70 md:text-base">
             Looking for an online English tutor? Explore a curated list of experienced instructors who can help with Reading, speaking, business communication and IELTS & TOEFL preparation.
