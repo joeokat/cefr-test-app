@@ -5,6 +5,7 @@ import Test from '../views/Test.vue'
 import Results from '../views/Results.vue'
 import Tutors from '../views/Tutors.vue'
 import TutorProfile from '../views/TutorProfile.vue'
+import Library from '../views/Library.vue'
 import { useTestStore } from '../stores/test'
 
 const router = createRouter({
@@ -16,6 +17,7 @@ const router = createRouter({
     // Test.vue has its own exit control instead
     { path: '/test', name: 'test', component: Test, meta: { hideNav: true } },
     { path: '/results', name: 'results', component: Results },
+    { path: '/library', name: 'library', component: Library },
     { path: '/tutors', name: 'tutors', component: Tutors },
     { path: '/tutors/:id', name: 'tutor-profile', component: TutorProfile },
   ],

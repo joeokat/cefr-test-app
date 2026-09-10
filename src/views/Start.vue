@@ -23,6 +23,10 @@ function startTest() {
           Test your grammar, vocabulary, reading, listening, and pronunciation skills to find out your level.
         </p>
 
+        <div class="mt-12 mb-6 md:mt-0">
+          <CefrScale />
+        </div>
+
         <button
           type="button"
           class="w-full rounded-card bg-teal py-4 font-display text-base font-semibold text-paper shadow-sm transition-transform active:scale-[0.98] md:w-auto md:px-10"
@@ -34,8 +38,9 @@ function startTest() {
       </div>
 
       <div class="mt-12 md:mt-0">
-        <CefrScale />
+        <img src="/joeokat.jpg" alt="Test taker" class="w-full">
       </div>
+      
     </div>
   </div>
 </template>

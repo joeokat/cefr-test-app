@@ -49,9 +49,6 @@ const faqs = [
         <p class="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-3 py-1.5 font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-teal-dark">
           Want to improve?
         </p>
-        <p class="mt-3 font-body text-base leading-relaxed text-ink/70 md:whitespace-nowrap">
-          Find a tutor who can help you move to the next level.
-        </p>
       </div>
     </div>
 
@@ -89,21 +86,6 @@ const faqs = [
       </ol>
     </div>
 
-    <!-- Who this is for -->
-    <div class="mt-14 pt-10 md:mt-16 md:mx-auto md:max-w-2xl">
-      <h2 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight md:text-center">FAQs</h2>
-      <div class="space-y-3">
-        <div
-          v-for="faq in faqs"
-          :key="faq.question"
-          class="rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm"
-        >
-          <p class="font-display text-[15px] font-semibold text-ink">{{ faq.question }}</p>
-          <p class="mt-2 font-body text-[15px] leading-relaxed text-ink/70">{{ faq.answer }}</p>
-        </div>
-      </div>
-    </div>
-
     <!-- Learner feedback -->
     <div class="mt-14 pt-10 md:mt-16 md:mx-auto md:max-w-2xl">
       <h2 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight md:text-center">What learners say</h2>
@@ -123,6 +105,21 @@ const faqs = [
             <cite class="mt-2 block font-body text-xs font-medium not-italic text-ink/50">{{ review.author }}</cite>
           </div>
         </blockquote>
+      </div>
+    </div>
+
+    <!-- Who this is for -->
+    <div class="mt-14 pt-10 md:mt-16 md:mx-auto md:max-w-2xl">
+      <h2 class="font-display text-[2rem] leading-[1.15] font-semibold text-ink mb-4 md:text-4xl md:leading-tight md:text-center">FAQs</h2>
+      <div class="space-y-3">
+        <div
+          v-for="faq in faqs"
+          :key="faq.question"
+          class="rounded-2xl border border-ink/10 bg-paper p-4 shadow-sm"
+        >
+          <p class="font-display text-[15px] font-semibold text-ink">{{ faq.question }}</p>
+          <p class="mt-2 font-body text-[15px] leading-relaxed text-ink/70">{{ faq.answer }}</p>
+        </div>
       </div>
     </div>
 
