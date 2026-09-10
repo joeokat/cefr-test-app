@@ -146,18 +146,18 @@ export function buildRandomQuestionSet() {
 
 export const CEFR_DESCRIPTIONS = {
   A1: "You can understand and use simple, everyday phrases. Basic greetings and introductions are comfortable, but longer conversations are still difficult.",
-  A2: "You can handle short, routine exchanges — shopping, directions, simple work tasks — but describing experiences or opinions in detail is still a stretch.",
-  B1: "You can handle everyday conversations and simple work topics, and can get your point across while travelling. Longer or more nuanced discussions are still a stretch.",
-  B2: "You can follow most conversations and discussions, express opinions clearly, and handle work or study in English without much difficulty. Nuance and idiomatic language can still trip you up.",
-  C1: "You can use English flexibly and effectively for work, study, and social situations, and can understand a wide range of demanding texts and implicit meaning.",
-  C2: "You can understand virtually everything you read or hear, and express yourself precisely, even in complex situations. This is near-native fluency.",
+  A2: "You can manage short, routine exchanges about shopping, directions, and simple work tasks. Describing experiences or opinions in detail is the next step.",
+  B1: "You can manage everyday conversations and simple work topics, and you can make yourself understood while travelling. Longer or more nuanced discussions are your next challenge.",
+  B2: "You can follow most conversations, express your opinions clearly, and use English for work or study. More subtle meaning and idiomatic language are the areas to keep developing.",
+  C1: "You can use English flexibly for work, study, and social situations, and understand demanding texts and implied meaning.",
+  C2: "You can understand almost everything you read or hear and express yourself precisely in complex situations. Your English is close to native level.",
 }
 
 export const CEFR_RECOMMENDATIONS = {
-  A1: "Focus on foundational grammar (simple present, simple past) and building your everyday vocabulary — aim for a little practice every day rather than long sessions.",
-  A2: "Build on your foundation with more verb tenses and wider vocabulary. Practising short conversations out loud will help more than studying rules alone.",
-  B1: "Work on connecting ideas in longer sentences and reading a wider range of texts. This is a good stage to start structured IELTS/TOEFL prep if that's your goal.",
-  B2: "Sharpen your grammar accuracy and start focusing on nuance — idioms, tone, and more formal register. Targeted IELTS/TOEFL or workplace-English practice will pay off now.",
-  C1: "Polish precision and register — the gap at this level is usually about sounding natural, not about being understood. Focus on nuance-heavy practice and exam-specific strategy if you're preparing for IELTS/TOEFL.",
-  C2: "You're near native fluency — focus on refining specialised vocabulary for your field and maintaining your level through regular, varied practice.",
+  A1: "Start with the foundations. Review the simple present and simple past, then build your everyday vocabulary with a little practice each day.",
+  A2: "You have a useful foundation already. Keep adding verb tenses and vocabulary, and practise short conversations aloud so the language becomes more automatic.",
+  B1: "You are ready to connect ideas in longer sentences and read a wider range of texts. If you are preparing for IELTS or TOEFL, this is a good time to begin structured practice.",
+  B2: "Your next step is greater accuracy and control. Pay attention to idioms, tone, and formal language, and use focused IELTS, TOEFL, or workplace-English practice.",
+  C1: "You are communicating effectively. To move forward, work on precision, natural phrasing, and the level of formality you use in different situations.",
+  C2: "Your English is highly advanced. Keep it strong by refining specialist vocabulary in your field and reading or listening to a wide range of demanding material.",
 }

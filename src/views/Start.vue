@@ -38,7 +38,7 @@ function startTest() {
       </div>
 
       <div class="mt-12 md:mt-0">
-        <img src="/joeokat.jpg" alt="Test taker" class="w-full">
+        <img src="/joeokat.png" alt="Test taker" class="w-full">
       </div>
       
     </div>

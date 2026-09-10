@@ -20,8 +20,8 @@ export default {
         line: '#DCD5C4',
       },
       fontFamily: {
-        display: ['"Space Grotesk"', 'sans-serif'],
-        body: ['"Work Sans"', 'sans-serif'],
+        display: ['"Poppins"', 'sans-serif'],
+        body: ['"Sora"', 'sans-serif'],
       },
       borderRadius: {
         card: '10px',
