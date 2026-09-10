@@ -54,7 +54,7 @@ function openProfile(id) {
       </div> -->
     </div>
 
-    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:mx-auto xl:max-w-5xl xl:grid-cols-3 xl:gap-6">
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:mx-auto xl:max-w-5xl xl:gap-6">
       <article
         v-for="tutor in tutors"
         :key="tutor.id"
