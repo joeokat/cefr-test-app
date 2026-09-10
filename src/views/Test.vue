@@ -1,7 +1,7 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useTestStore } from '../stores/test'
+import { TEST_TIME_LIMIT_SECONDS, useTestStore } from '../stores/test'
 import TestProgress from '../components/TestProgress.vue'
 import TextQuestion from '../components/questions/TextQuestion.vue'
 import AudioQuestion from '../components/questions/AudioQuestion.vue'
@@ -12,6 +12,29 @@ const store = useTestStore()
 
 const question = computed(() => store.currentQuestion)
 const selected = computed(() => store.answers[question.value?.id]?.selected ?? null)
+const currentTime = ref(Date.now())
+let timerId
+
+const elapsedSeconds = computed(() => {
+  if (!store.startedAt) return 0
+  return Math.max(0, Math.floor((currentTime.value - store.startedAt) / 1000))
+})
+const remainingSeconds = computed(() => Math.max(0, TEST_TIME_LIMIT_SECONDS - elapsedSeconds.value))
+const timeExpired = computed(() => remainingSeconds.value === 0)
+const timeWarning = computed(() => remainingSeconds.value > 0 && remainingSeconds.value <= 2 * 60)
+const formattedTime = computed(() => {
+  const minutes = Math.floor(remainingSeconds.value / 60)
+  const seconds = remainingSeconds.value % 60
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+})
+
+onMounted(() => {
+  timerId = window.setInterval(() => {
+    currentTime.value = Date.now()
+  }, 1000)
+})
+
+onUnmounted(() => window.clearInterval(timerId))
 
 const componentMap = {
   text: TextQuestion,
@@ -56,6 +79,23 @@ function confirmExit() {
     </div>
 
     <TestProgress :current="store.currentIndex" :total="store.total" />
+
+    <div
+      class="mt-5 flex items-center justify-between rounded-card border px-4 py-3"
+      :class="timeExpired || timeWarning ? 'border-clay/40 bg-clay/10' : 'border-line bg-white/60'"
+      role="status"
+      aria-live="polite"
+    >
+      <div>
+        <p class="font-display text-sm font-semibold" :class="timeExpired || timeWarning ? 'text-clay' : 'text-ink'">
+          {{ timeExpired ? 'Time expired' : timeWarning ? '2 minutes left' : 'Time remaining' }}
+        </p>
+        <p v-if="timeExpired" class="mt-0.5 font-body text-xs text-ink/60">You can keep working and finish when ready.</p>
+      </div>
+      <span class="font-display text-lg font-semibold tabular-nums" :class="timeExpired || timeWarning ? 'text-clay' : 'text-teal-dark'">
+        {{ formattedTime }}
+      </span>
+    </div>
 
     <div class="flex-1 mt-8">
       <component :is="currentComponent" :question="question" :selected="selected" @select="select" />

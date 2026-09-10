@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf'
 import { CEFR_ORDER, CEFR_DESCRIPTIONS, CEFR_RECOMMENDATIONS } from '../data/questions'
+import { TEST_TIME_LIMIT_SECONDS } from '../stores/test'
 
 const CATEGORY_LABELS = {
   grammar: 'Grammar',
@@ -58,6 +59,33 @@ export function downloadDetailedReport(result) {
   const description = doc.splitTextToSize(CEFR_DESCRIPTIONS[result.level], 480)
   doc.text(description, MARGIN_X, y)
   y += description.length * 14 + 20
+
+  // Timing summary
+  doc.setFont('helvetica', 'bold')
+  doc.setFontSize(13)
+  doc.setTextColor(...ink)
+  doc.text('Test timing', MARGIN_X, y)
+  y += 20
+
+  doc.setFont('helvetica', 'normal')
+  doc.setFontSize(11)
+  doc.setTextColor(...grey)
+  const elapsedSeconds = result.elapsedSeconds ?? 0
+  const elapsedMinutes = Math.floor(elapsedSeconds / 60)
+  const elapsedRemainder = String(elapsedSeconds % 60).padStart(2, '0')
+  const exceededSeconds = Math.max(0, elapsedSeconds - TEST_TIME_LIMIT_SECONDS)
+  const exceededMinutes = Math.floor(exceededSeconds / 60)
+  const exceededRemainder = String(exceededSeconds % 60).padStart(2, '0')
+  doc.text(`Time taken: ${elapsedMinutes}m ${elapsedRemainder}s`, MARGIN_X, y)
+  y += 16
+  doc.text(
+    exceededSeconds > 0
+      ? `8-minute target exceeded by ${exceededMinutes}m ${exceededRemainder}s`
+      : 'Completed within the 8-minute target',
+    MARGIN_X,
+    y,
+  )
+  y += 30
 
   // Band-by-band breakdown
   doc.setFont('helvetica', 'bold')

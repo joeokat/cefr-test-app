@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { buildRandomQuestionSet, CEFR_ORDER } from '../data/questions'
 
 const PASS_THRESHOLD = 0.7 // 70% correct within a level band to "pass" that band
+export const TEST_TIME_LIMIT_SECONDS = 8 * 60
 
 export const useTestStore = defineStore('test', {
   state: () => ({
@@ -10,6 +11,9 @@ export const useTestStore = defineStore('test', {
     // answers[questionId] = { selected, correct }
     answers: {},
     result: null,
+    startedAt: null,
+    completedAt: null,
+    elapsedSeconds: null,
   }),
 
   getters: {
@@ -51,6 +55,10 @@ export const useTestStore = defineStore('test', {
     },
 
     finish() {
+      if (!this.completedAt) {
+        this.completedAt = Date.now()
+        this.elapsedSeconds = Math.max(0, Math.ceil((this.completedAt - this.startedAt) / 1000))
+      }
       this.result = this.calculateResult()
     },
 
@@ -62,6 +70,9 @@ export const useTestStore = defineStore('test', {
       this.currentIndex = 0
       this.answers = {}
       this.result = null
+      this.startedAt = Date.now()
+      this.completedAt = null
+      this.elapsedSeconds = null
     },
 
     calculateResult() {

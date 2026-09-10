@@ -6,6 +6,7 @@ import CefrScale from '../components/CefrScale.vue'
 import PaywallModal from '../components/PaywallModal.vue'
 import { CEFR_DESCRIPTIONS, CEFR_RECOMMENDATIONS } from '../data/questions'
 import { downloadDetailedReport } from '../utils/generateReport'
+import { TEST_TIME_LIMIT_SECONDS } from '../stores/test'
 
 const COMMUNITY_WHATSAPP_LINK = 'https://whatsapp.com/channel/0029Vb75A7r2UPBPBwWrh93v'
 
@@ -40,6 +41,13 @@ const weakCategoryPercentage = computed(() => {
   const stats = result.value?.categoryStats?.[result.value?.weakestCategory]
   return stats?.total ? Math.round((stats.correct / stats.total) * 100) : 0
 })
+const formatDuration = (seconds) => {
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
+  return `${minutes}m ${String(remainingSeconds).padStart(2, '0')}s`
+}
+const timeTaken = computed(() => formatDuration(result.value?.elapsedSeconds ?? 0))
+const timeLimitExceededBy = computed(() => Math.max(0, (result.value?.elapsedSeconds ?? 0) - TEST_TIME_LIMIT_SECONDS))
 
 const categoryPerformance = computed(() => Object.entries(CATEGORY_LABELS)
   .map(([category, label]) => {
@@ -93,6 +101,22 @@ function retake() {
     <p class="text-center font-display text-lg font-medium text-ink/60 mb-8">{{ LEVEL_NAMES[level] }}</p>
 
     <CefrScale :active-level="level" />
+
+    <div class="mt-8 rounded-card border border-line bg-white/60 p-5">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="font-display text-sm font-semibold text-ink">Test timing</p>
+          <p class="mt-1 font-body text-sm text-ink/60">Use this to track and improve your answering speed.</p>
+        </div>
+        <p class="font-display text-lg font-semibold text-teal-dark">{{ timeTaken }}</p>
+      </div>
+      <p v-if="timeLimitExceededBy" class="mt-3 font-body text-sm text-clay">
+        You exceeded the 8-minute target by {{ formatDuration(timeLimitExceededBy) }}.
+      </p>
+      <p v-else class="mt-3 font-body text-sm text-ink/70">
+        Completed within the 8-minute target.
+      </p>
+    </div>
 
     <p class="mt-8 font-body text-[15px] leading-relaxed text-ink/80 md:mx-auto md:max-w-xl md:text-center">
       {{ CEFR_DESCRIPTIONS[level] }}
