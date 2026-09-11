@@ -18,13 +18,23 @@ const error = ref('')
 const isProcessing = ref(false)
 const isLoadingRate = ref(true)
 const charge = ref(null) // { ghsAmount, pesewas, displayUsd }
+let rateRequestId = 0
 
-// Fetch the live conversion rate as soon as the modal opens, not before —
-// no point calling the rate API for a modal the learner never opens.
-watch(() => props.open, async (isOpen) => {
-  if (!isOpen || charge.value) return
+// Recalculate whenever the modal opens or a different product price is selected.
+watch([() => props.open, () => props.price], async ([isOpen, price]) => {
+  const requestId = ++rateRequestId
+
+  if (!isOpen) {
+    charge.value = null
+    isLoadingRate.value = false
+    return
+  }
+
+  charge.value = null
   isLoadingRate.value = true
-  charge.value = await getGhsChargeAmount(Number.parseFloat(props.price.replace('$', '')))
+  const nextCharge = await getGhsChargeAmount(Number.parseFloat(price.replace('$', '')))
+  if (requestId !== rateRequestId) return
+  charge.value = nextCharge
   isLoadingRate.value = false
 })
 
@@ -90,7 +100,6 @@ function pay() {
           <span v-if="isLoadingRate" class="font-body text-sm text-ink/50">Loading price…</span>
           <template v-else-if="charge">
             <span class="font-display text-2xl font-bold text-teal-dark">{{ charge.displayUsd }}</span>
-            <span class="ml-1 font-body text-sm text-ink/50">(GHS {{ charge.ghsAmount.toFixed(2) }})</span>
           </template>
         </div>
 
