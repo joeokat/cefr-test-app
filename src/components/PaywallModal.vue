@@ -118,7 +118,7 @@ function pay() {
           :disabled="isProcessing || isLoadingRate"
           @click="pay"
         >
-          {{ isProcessing ? 'Opening payment…' : 'Pay with Momo or card' }}
+          {{ isProcessing ? 'Opening payment…' : 'Pay with Momo or Card' }}
         </button>
 
         <p class="mt-3 text-center font-body text-xs text-ink/40">Secure payment via Paystack</p>
