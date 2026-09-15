@@ -12,9 +12,9 @@ const downloadError = ref('')
 const levels = ['All levels', 'A1–A2', 'B1–B2', 'C1–C2']
 const books = [
     { title: 'The Little Lantern', author: 'JoeOkat', level: 'A1–A2', type: 'Short story', time: 12, price: 'Free', color: 'coral', description: 'A warm story about finding courage in small places.', downloadUrl: '/ebooks/the-little-lantern.pdf', downloadName: 'the-little-lantern.pdf' },
-    { title: 'A City of Small Things', author: 'Lena Park', level: 'B1–B2', type: 'Easy reader', time: 28, price: '$0.49', color: 'blue', description: 'Discover the extraordinary in an ordinary day.', downloadUrl: '/ebooks/a-city-of-small-things.pdf', downloadName: 'a-city-of-small-things.pdf' },
-    { title: 'The Last Letter', author: 'Noah Williams', level: 'B1–B2', type: 'Short story', time: 18, price: '$0.19', color: 'green', description: 'A thoughtful story about friendship, distance, and home.', downloadUrl: '/ebooks/the-last-letter.pdf', downloadName: 'the-last-letter.pdf' },
-    { title: 'Beyond the Stars', author: 'Ari Cole', level: 'C1–C2', type: 'Novella', time: 42, price: '$0.99', color: 'purple', description: 'An inspiring journey for curious minds and brave dreamers.' }
+    // { title: 'A City of Small Things', author: 'Lena Park', level: 'B1–B2', type: 'Easy reader', time: 28, price: '$0.49', color: 'blue', description: 'Discover the extraordinary in an ordinary day.', downloadUrl: '/ebooks/a-city-of-small-things.pdf', downloadName: 'a-city-of-small-things.pdf' },
+    // { title: 'The Last Letter', author: 'Noah Williams', level: 'B1–B2', type: 'Short story', time: 18, price: '$0.19', color: 'green', description: 'A thoughtful story about friendship, distance, and home.', downloadUrl: '/ebooks/the-last-letter.pdf', downloadName: 'the-last-letter.pdf' },
+    // { title: 'Beyond the Stars', author: 'Ari Cole', level: 'C1–C2', type: 'Novella', time: 42, price: '$0.99', color: 'purple', description: 'An inspiring journey for curious minds and brave dreamers.' }
 ]
 
 const filteredBooks = computed(() => books.filter(book => (selected.value === 'All levels' || book.level === selected.value) && `${book.title} ${book.author} ${book.description}`.toLowerCase().includes(search.value.toLowerCase())).sort((a, b) => sort.value === 'free' ? (b.price === 'Free') - (a.price === 'Free') : 0))
@@ -89,7 +89,7 @@ function handlePaymentSuccess() {
             <div><span class="eyebrow">MADE FOR PROGRESS</span>
                 <h2>Read at your level. Grow at your pace.</h2>
                 <p>Every story includes useful vocabulary and clear language so you can improve naturally.</p>
-            </div><a class="light" href=https://whatsapp.com/channel/0029Vb5k0yeFi8xZMhyvel0g target="_blank">Start reading →</a>
+            </div><a class="light" href=#books target="_blank">Download a book →</a>
         </section>
     </main>
     <PaywallModal
