@@ -46,8 +46,8 @@ function handlePaymentSuccess() {
         <section class="hero">
             <div>
                 <span class="eyebrow">READ · LEARN · GROW</span>
-                <h1>Stories that make English <i>stick.</i></h1>
-                <p>Build confidence one page at a time with friendly ebooks and stories made for English learners.</p>
+                <h1>Lessons & Stories that make <i>English</i> stick.</h1>
+                <p>Build your English with engaging ebooks designed to help you learn naturally, remember more, and use what you learn with confidence.</p>
                 <a class="primary" href="#books">Explore the library <b>→</b></a>
             </div>
             <div class="art" aria-hidden="true">
@@ -60,8 +60,8 @@ function handlePaymentSuccess() {
         <section id="books" class="content">
             <div class="heading">
                 <div><span class="eyebrow">YOUR NEXT READ</span>
-                    <h2>Find your perfect story</h2>
-                </div><label class="search">⌕ <input v-model="search" placeholder="Search titles, topics..." /></label>
+                    <h2>Find a lesson or story you'll enjoy.</h2>
+                </div><label class="search">⌕ <input v-model="search" placeholder="Search lessons by titles, topics..." /></label>
             </div>
             <div class="filters">
                 <div><button v-for="level in levels" :key="level" :class="{ active: selected === level }"
@@ -86,10 +86,10 @@ function handlePaymentSuccess() {
             <p v-if="downloadError" class="empty">{{ downloadError }}</p>
         </section>
         <section class="callout"><span>✦</span>
-            <div><span class="eyebrow">MADE FOR PROGRESS</span>
+            <div><span class="eyebrow">STORIES MADE FOR PROGRESS</span>
                 <h2>Read at your level. Grow at your pace.</h2>
-                <p>Every story includes useful vocabulary and clear language so you can improve naturally.</p>
-            </div><a class="light" href=#books target="_blank">Download a book →</a>
+                <p>Every reading includes useful vocabulary and clear expressions, so you can improve naturally.</p>
+            </div><a class="light" href=#books>Download eBooks →</a>
         </section>
     </main>
     <PaywallModal
