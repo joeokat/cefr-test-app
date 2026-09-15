@@ -46,7 +46,7 @@ function handlePaymentSuccess() {
         <section class="hero">
             <div>
                 <span class="eyebrow">READ · LEARN · GROW</span>
-                <h1>Lessons & Stories that make <i>English</i> stick.</h1>
+                <h1>Lessons that make <i>English</i> stick.</h1>
                 <p>Build your English with engaging ebooks designed to help you learn naturally, remember more, and use what you learn with confidence.</p>
                 <a class="primary" href="#books">Explore the library <b>→</b></a>
             </div>
